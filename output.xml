@@ -1,490 +1,720 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 5.0.1 (Python 3.10.6 on win32)" generated="20220812 16:51:33.658" rpa="false" schemaversion="3">
-<suite id="s1" name="Tricentis" source="C:\Users\jonny\dev\projetos-python\QA-Projeto_Teste\tricentis.robot">
-<test id="s1-t1" name="Acessar Page Tricentis" line="8">
-<kw name="Acesso a Inicial Page">
-<kw name="Open Browser" library="SeleniumLibrary">
-<arg>http://sampleapp.tricentis.com/101/#</arg>
-<arg>chrome</arg>
-<arg>options=add_experimental_option('excludeSwitches', ['enable-logging'])</arg>
-<doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20220812 16:51:33.954" level="INFO">Opening browser 'chrome' to base url 'http://sampleapp.tricentis.com/101/#'.</msg>
-<status status="PASS" starttime="20220812 16:51:33.953" endtime="20220812 16:51:40.562"/>
+<robot generator="Robot 5.0.1 (Python 3.10.6 on win32)" generated="20220815 18:37:18.319" rpa="false" schemaversion="3">
+<suite id="s1" name="API TEST" source="C:\Users\jonny\dev\projetos-python\QA-Projeto_Teste\API_TEST.robot">
+<test id="s1-t1" name="GET Request Test" line="22">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>myssesion</arg>
+<arg>${URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220815 18:37:18.866" level="INFO">Creating Session using : alias=myssesion, url=http://localhost:9090, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220815 18:37:18.866" endtime="20220815 18:37:18.866"/>
 </kw>
-<kw name="Maximize Browser Window" library="SeleniumLibrary">
-<doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20220812 16:51:40.562" endtime="20220812 16:51:40.681"/>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220815 18:37:18.866" level="INFO">&amp;{headers} = { Content-Type=application/json }</msg>
+<status status="PASS" starttime="20220815 18:37:18.866" endtime="20220815 18:37:18.866"/>
 </kw>
-<status status="PASS" starttime="20220812 16:51:33.953" endtime="20220812 16:51:40.681"/>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>myssesion</arg>
+<arg>/customer</arg>
+<arg>${headers}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20220815 18:37:18.882" level="INFO">GET Request : url=http://localhost:9090/customer?Content-Type=application%2Fjson 
+ path_url=/customer?Content-Type=application%2Fjson 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20220815 18:37:18.882" level="INFO">GET Response : url=http://localhost:9090/customer?Content-Type=application%2Fjson 
+ status=200, reason= 
+ headers={'Content-Type': 'application/json;charset=UTF-8', 'Transfer-Encoding': 'chunked', 'Date': 'Mon, 15 Aug 2022 21:37:18 GMT'} 
+ body=[{"name":"Paulo","lastName":"Silvas","birthDate":"1975-09-14","id":1,"cards":[]},{"name":"Paulo","lastName":"Silva","birthDate":"1975-09-14","id":2,"cards":[{"customerId":2,"number":"1001200230034004","holderName":"Becker + Charles","brand":"MASTER","expirationMoth":2,"expirationYear":2023,"cvc":"555","id":47},{"customerId":2,"number":"1001200230034004","holderName":"Davis + Blake","brand":"MASTER","expirationMoth":2,"expirationYear":2023,"cvc":"555","id":49},{"customerId":2,"number":"1001200230034004","holderName":"Guerrero + Katherine","brand":"MASTER","expirationMoth":2,"expirationYear":2023,"cvc":"555","id":51},{"customerId":2,"number":"1001200230034004","holderName":"Thomas + Steven","brand":"MASTER","expirationMoth":2,"expirationYear":2023,"cvc":"555","id":56},{"customerId":2,"number":"1001200230034004","holderName":"Jones + Anita","brand":"MASTER","expirationMoth":2,"expirationYear":2023,"cvc":"555","id":61},{"customerId":2,"number":"1001200230034004","holderName":"Austin + Stephanie","brand":"MASTER","expirationMoth":2,"expirationYear":2023,"cvc":"555","id":64},{"customerId":2,"number":"1001200230034004","holderName":"Lang + Heather","brand":"MASTER","expirationMoth":2,"expirationYear":2023,"cvc":"555","id":67},{"customerId":2,"number":"1001200230034004","holderName":"Moore + Anne","brand":"MASTER","expirationMoth":2,"expirationYear":2023,"cvc":"555","id":70},{"customerId":2,"number":"1001200230034004","holderName":"Adams + Mark","brand":"MASTER","expirationMoth":2,"expirationYear":2023,"cvc":"555","id":73},{"customerId":2,"number":"1001200230034004","holderName":"Cox + William","brand":"MASTER","expirationMoth":2,"expirationYear":2023,"cvc":"555","id":76},{"customerId":2,"number":"1001200230034004","holderName":"Wilson + Jennifer","brand":"MASTER","expirationMoth":2,"expirationYear":2023,"cvc":"555","id":79},{"customerId":2,"number":"1001200230034004","holderName":"Alexander + Sarah","brand":"MASTER","expirationMoth":2,"expirationYear":2023,"cvc":"555","id":84},{"customerId":2,"number":"1001200230034004","holderName":"Lee + Derek","brand":"MASTER","expirationMoth":2,"expirationYear":2023,"cvc":"555","id":86},{"customerId":2,"number":"1001200230034004","holderName":"Lowery + William","brand":"MASTER","expirationMoth":2,"expirationYear":2023,"cvc":"555","id":88},{"customerId":2,"number":"1001200230034004","holderName":"Frederick + Eric","brand":"MASTER","expirationMoth":2,"expirationYear":2023,"cvc":"555","id":90},{"customerId":2,"number":"1001200230034004","holderName":"Brown + Allen","brand":"MASTER","expirationMoth":2,"expirationYear":2023,"cvc":"555","id":93},{"customerId":2,"number":"1001200230034004","holderName":"Rhodes + Douglas","brand":"MASTER","expirationMoth":2,"expirationYear":2023,"cvc":"555","id":95},{"customerId":2,"number":"1001200230034004","holderName":"Arroyo + Erik","brand":"MASTER","expirationMoth":2,"expirationYear":2023,"cvc":"555","id":97},{"customerId":2,"number":"1001200230034004","holderName":"Osborn + Jeffrey","brand":"MASTER","expirationMoth":2,"expirationYear":2023,"cvc":"555","id":101},{"customerId":2,"number":"1001200230034004","holderName":"Pham + Jacob","brand":"MASTER","expirationMoth":2,"expirationYear":2023,"cvc":"555","id":103},{"customerId":2,"number":"1001200230034004","holderName":"Smith + James","brand":"MASTER","expirationMoth":2,"expirationYear":2023,"cvc":"555","id":105},{"customerId":2,"number":"1001200230034004","holderName":"Moore + Sandra","brand":"MASTER","expirationMoth":2,"expirationYear":2023,"cvc":"555","id":109},{"customerId":2,"number":"1001200230034004","holderName":"Parker + Charles","brand":"MASTER","expirationMoth":2,"expirationYear":2023,"cvc":"555","id":111},{"customerId":2,"number":"1001200230034004","holderName":"Hill + Veronica","brand":"MASTER","expirationMoth":2,"expirationYear":2023,"cvc":"555","id":113},{"customerId":2,"number":"1001200230034004","holderName":"Torres + Karen","brand":"MASTER","expirationMoth":2,"expirationYear":2023,"cvc":"555","id":116},{"customerId":2,"number":"1001200230034004","holderName":"Jones + Michael","brand":"MASTER","expirationMoth":2,"expirationYear":2023,"cvc":"555","id":118},{"customerId":2,"number":"1001200230034004","holderName":"Grant + Amy","brand":"MASTER","expirationMoth":2,"expirationYear":2023,"cvc":"555","id":120},{"customerId":2,"number":"1001200230034004","holderName":"Hall + Katie","brand":"MASTER","expirationMoth":2,"expirationYear":2023,"cvc":"555","id":123},{"customerId":2,"number":"1001200230034004","holderName":"Johnson + Jennifer","brand":"MASTER","expirationMoth":2,"expirationYear":2023,"cvc":"555","id":126},{"customerId":2,"number":"1001200230034004","holderName":"Salas + Jerome","brand":"MASTER","expirationMoth":2,"expirationYear":2023,"cvc":"555","id":129},{"customerId":2,"number":"1001200230034004","holderName":"Hays + Stephen","brand":"MASTER","expirationMoth":2,"expirationYear":2023,"cvc":"555","id":133}]},{"name":"Silva","lastName":"Emma","birthDate":"1975-09-14","id":3,"cards":[{"customerId":3,"number":"1001200230034004","holderName":"jose joe","brand":"MASTER","expirationMoth":2,"expirationYear":2023,"cvc":"231","id":35}]},{"name":"Silva","lastName":"Maria","birthDate":"1975-09-14","id":4,"cards":[]},{"name":"Silva","lastName":"Roy","birthDate":"1975-09-14","id":5,"cards":[]},{"name":"Burton","lastName":"Aimee","birthDate":"1975-09-14","id":6,"cards":[]},{"name":"Rose","lastName":"Jared","birthDate":"1975-09-14","id":7,"cards":[]},{"name":"Hines","lastName":"Mason","birthDate":"1975-09-14","id":8,"cards":[]},{"name":"Williams","lastName":"Tim","birthDate":"1975-09-14","id":9,"cards":[]},{"name":"Bates","lastName":"Tracy","birthDate":"1975-09-14","id":10,"cards":[]},{"name":"Barnett","lastName":"Jacob","birthDate":"1975-09-14","id":11,"cards":[]},{"name":"Morgan","lastName":"Kayla","birthDate":"1975-09-14","id":12,"cards":[]},{"name":"Beard","lastName":"Christopher","birthDate":"1975-09-14","id":13,"cards":[]},{"name":"Stokes","lastName":"Gary","birthDate":"1975-09-14","id":14,"cards":[]},{"name":"Sharp","lastName":"Jamie","birthDate":"1975-09-14","id":15,"cards":[]},{"name":"Gray","lastName":"James","birthDate":"1975-09-14","id":16,"cards":[]},{"name":"Cunningham","lastName":"Allison","birthDate":"1975-09-14","id":17,"cards":[]},{"name":"Lewis","lastName":"Taylor","birthDate":"1975-09-14","id":18,"cards":[]},{"name":"Gonzales","lastName":"Joshua","birthDate":"1975-09-14","id":19,"cards":[]},{"name":"Thomas","lastName":"Jacob","birthDate":"1975-09-14","id":20,"cards":[]},{"name":"Griffin","lastName":"Peter","birthDate":"1975-09-14","id":21,"cards":[]},{"name":"Johnson","lastName":"Molly","birthDate":"1975-09-14","id":22,"cards":[]},{"name":"Allison","lastName":"Sherry","birthDate":"1975-09-14","id":23,"cards":[]},{"name":"Johnston","lastName":"Monica","birthDate":"1975-09-14","id":24,"cards":[]},{"name":"Edwards","lastName":"Christine","birthDate":"1975-09-14","id":25,"cards":[]},{"name":"Reyes","lastName":"Emily","birthDate":"1975-09-14","id":26,"cards":[]},{"name":"Riddle","lastName":"Crystal","birthDate":"1975-09-14","id":27,"cards":[]},{"name":"Ramos","lastName":"Christopher","birthDate":"1975-09-14","id":28,"cards":[]},{"name":"Holmes","lastName":"Karina","birthDate":"1975-09-14","id":29,"cards":[]},{"name":"Carson","lastName":"Theresa","birthDate":"1975-09-14","id":30,"cards":[]},{"name":"Green","lastName":"Peter","birthDate":"1975-09-14","id":31,"cards":[]},{"name":"Cole","lastName":"Kimberly","birthDate":"1975-09-14","id":32,"cards":[]},{"name":"Smith","lastName":"Anne","birthDate":"1975-09-14","id":33,"cards":[]},{"name":"Paulo","lastName":"Alvo","birthDate":"1975-09-14","id":36,"cards":[]},{"name":"Paulo","lastName":"Alvo1","birthDate":"1975-09-14","id":37,"cards":[]},{"name":"Alvo","lastName":"Paulo","birthDate":"1975-09-14","id":38,"cards":[]},{"name":"Jackson","lastName":"Adrian","birthDate":"1975-09-14","id":39,"cards":[]},{"name":"Nguyen","lastName":"Douglas","birthDate":"1975-09-14","id":40,"cards":[]},{"name":"Reynolds","lastName":"David","birthDate":"1975-09-14","id":41,"cards":[]},{"name":"Anderson","lastName":"Amanda","birthDate":"1975-09-14","id":42,"cards":[]},{"name":"Bray","lastName":"Jacob","birthDate":"1975-09-14","id":43,"cards":[]},{"name":"Garcia","lastName":"Aaron","birthDate":"1975-09-14","id":44,"cards":[]},{"name":"Simpson","lastName":"Suzanne","birthDate":"1975-09-14","id":45,"cards":[]},{"name":"Becker","lastName":"Charles","birthDate":"1975-09-14","id":46,"cards":[]},{"name":"Davis","lastName":"Blake","birthDate":"1975-09-14","id":48,"cards":[]},{"name":"Guerrero","lastName":"Katherine","birthDate":"1975-09-14","id":50,"cards":[]},{"name":"Clark","lastName":"Tammy","birthDate":"1975-09-14","id":52,"cards":[]},{"name":"Williamson","lastName":"Larry","birthDate":"1975-09-14","id":54,"cards":[]},{"name":"Thomas","lastName":"Steven","birthDate":"1975-09-14","id":55,"cards":[]},{"name":"Sanchez","lastName":"Robert","birthDate":"1975-09-14","id":57,"cards":[]},{"name":"Gregory","lastName":"Duane","birthDate":"1975-09-14","id":58,"cards":[]},{"name":"Mccarthy","lastName":"Jennifer","birthDate":"1975-09-14","id":59,"cards":[]},{"name":"Jones","lastName":"Anita","birthDate":"1975-09-14","id":60,"cards":[]},{"name":"Kelly","lastName":"Gilbert","birthDate":"1975-09-14","id":62,"cards":[]},{"name":"Austin","lastName":"Stephanie","birthDate":"1975-09-14","id":63,"cards":[]},{"name":"Evans","lastName":"Debra","birthDate":"1975-09-14","id":65,"cards":[]},{"name":"Lang","lastName":"Heather","birthDate":"1975-09-14","id":66,"cards":[]},{"name":"Roberts","lastName":"Amanda","birthDate":"1975-09-14","id":68,"cards":[]},{"name":"Moore","lastName":"Anne","birthDate":"1975-09-14","id":69,"cards":[]},{"name":"Weber","lastName":"Emily","birthDate":"1975-09-14","id":71,"cards":[]},{"name":"Adams","lastName":"Mark","birthDate":"1975-09-14","id":72,"cards":[]},{"name":"Sims","lastName":"Kevin","birthDate":"1975-09-14","id":74,"cards":[]},{"name":"Cox","lastName":"Wil... (set the log level to DEBUG or TRACE to see the full content) 
+ </msg>
+<msg timestamp="20220815 18:37:18.882" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220815 18:37:18.866" endtime="20220815 18:37:18.882"/>
 </kw>
-<kw name="Entro na Target Page">
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>nav_automobile</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20220812 16:51:40.683" level="INFO">Clicking element 'nav_automobile'.</msg>
-<status status="PASS" starttime="20220812 16:51:40.682" endtime="20220812 16:51:42.361"/>
-</kw>
-<status status="PASS" starttime="20220812 16:51:40.682" endtime="20220812 16:51:42.361"/>
-</kw>
-<kw name="Estou logado na Page">
-<kw name="Page Should Contain" library="SeleniumLibrary">
-<arg>Home</arg>
-<doc>Verifies that current page contains ``text``.</doc>
-<msg timestamp="20220812 16:51:42.378" level="INFO">Current page contains text 'Home'.</msg>
-<status status="PASS" starttime="20220812 16:51:42.362" endtime="20220812 16:51:42.378"/>
-</kw>
-<status status="PASS" starttime="20220812 16:51:42.361" endtime="20220812 16:51:42.378"/>
-</kw>
-<status status="PASS" starttime="20220812 16:51:33.952" endtime="20220812 16:51:42.378"/>
+<status status="PASS" starttime="20220815 18:37:18.866" endtime="20220815 18:37:18.882"/>
 </test>
-<test id="s1-t2" name="Enter Vehicle Data" line="13">
-<kw name="Seleciono o veiculo">
-<kw name="Select From List By Value" library="SeleniumLibrary">
-<arg>make</arg>
-<arg>Honda</arg>
-<doc>Selects options from selection list ``locator`` by ``values``.</doc>
-<msg timestamp="20220812 16:51:42.380" level="INFO">Selecting options from selection list 'make' by value Honda.</msg>
-<status status="PASS" starttime="20220812 16:51:42.380" endtime="20220812 16:51:42.445"/>
+<test id="s1-t2" name="POST Request Test" line="29">
+<kw name="First Name" library="FakerLibrary">
+<var>${NOME1}</var>
+<msg timestamp="20220815 18:37:18.882" level="INFO">${NOME1} = Sara</msg>
+<status status="PASS" starttime="20220815 18:37:18.882" endtime="20220815 18:37:18.882"/>
 </kw>
-<status status="PASS" starttime="20220812 16:51:42.380" endtime="20220812 16:51:42.446"/>
+<kw name="Last Name" library="FakerLibrary">
+<var>${SOBRENOME}</var>
+<msg timestamp="20220815 18:37:18.882" level="INFO">${SOBRENOME} = Thompson</msg>
+<status status="PASS" starttime="20220815 18:37:18.882" endtime="20220815 18:37:18.882"/>
 </kw>
-<kw name="Engine Performance">
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>engineperformance</arg>
-<arg>306</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20220812 16:51:42.448" level="INFO">Typing text '306' into text field 'engineperformance'.</msg>
-<status status="PASS" starttime="20220812 16:51:42.447" endtime="20220812 16:51:42.568"/>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>myssesion</arg>
+<arg>${URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220815 18:37:18.882" level="INFO">Creating Session using : alias=myssesion, url=http://localhost:9090, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220815 18:37:18.882" endtime="20220815 18:37:18.882"/>
 </kw>
-<status status="PASS" starttime="20220812 16:51:42.446" endtime="20220812 16:51:42.568"/>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{body}</var>
+<arg>birthDate=1975-09-14</arg>
+<arg>lastName=${NOME1}</arg>
+<arg>name=${SOBRENOME}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220815 18:37:18.882" level="INFO">&amp;{body} = { birthDate=1975-09-14 | lastName=Sara | name=Thompson }</msg>
+<status status="PASS" starttime="20220815 18:37:18.882" endtime="20220815 18:37:18.882"/>
 </kw>
-<kw name="Date of Manufacture">
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>dateofmanufacture</arg>
-<arg>10/04/2008</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20220812 16:51:42.570" level="INFO">Typing text '10/04/2008' into text field 'dateofmanufacture'.</msg>
-<status status="PASS" starttime="20220812 16:51:42.569" endtime="20220812 16:51:42.707"/>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{headers}</var>
+<arg>Content-Type=application/json</arg>
+<arg>serverSide=false</arg>
+<arg>content-type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220815 18:37:18.882" level="INFO">&amp;{headers} = { Content-Type=application/json | serverSide=false | content-type=application/json }</msg>
+<status status="PASS" starttime="20220815 18:37:18.882" endtime="20220815 18:37:18.882"/>
 </kw>
-<status status="PASS" starttime="20220812 16:51:42.569" endtime="20220812 16:51:42.707"/>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>myssesion</arg>
+<arg>/customer</arg>
+<arg>json=${body}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20220815 18:37:18.897" level="INFO">POST Request : url=http://localhost:9090/customer 
+ path_url=/customer 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'content-type': 'application/json', 'serverSide': 'false', 'Content-Length': '67'} 
+ body=b'{"birthDate": "1975-09-14", "lastName": "Sara", "name": "Thompson"}' 
+ </msg>
+<msg timestamp="20220815 18:37:18.897" level="INFO">POST Response : url=http://localhost:9090/customer 
+ status=200, reason= 
+ headers={'Content-Type': 'application/json;charset=UTF-8', 'Transfer-Encoding': 'chunked', 'Date': 'Mon, 15 Aug 2022 21:37:18 GMT'} 
+ body={"name":"Thompson","lastName":"Sara","birthDate":"1975-09-14","id":134,"cards":[]} 
+ </msg>
+<msg timestamp="20220815 18:37:18.897" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220815 18:37:18.882" endtime="20220815 18:37:18.897"/>
 </kw>
-<kw name="Number of Seats">
-<kw name="Select From List By Value" library="SeleniumLibrary">
-<arg>numberofseats</arg>
-<arg>5</arg>
-<doc>Selects options from selection list ``locator`` by ``values``.</doc>
-<msg timestamp="20220812 16:51:42.708" level="INFO">Selecting options from selection list 'numberofseats' by value 5.</msg>
-<status status="PASS" starttime="20220812 16:51:42.708" endtime="20220812 16:51:42.775"/>
-</kw>
-<status status="PASS" starttime="20220812 16:51:42.707" endtime="20220812 16:51:42.776"/>
-</kw>
-<kw name="Fuel Type">
-<kw name="Select From List By Value" library="SeleniumLibrary">
-<arg>fuel</arg>
-<arg>Gas</arg>
-<doc>Selects options from selection list ``locator`` by ``values``.</doc>
-<msg timestamp="20220812 16:51:42.777" level="INFO">Selecting options from selection list 'fuel' by value Gas.</msg>
-<status status="PASS" starttime="20220812 16:51:42.776" endtime="20220812 16:51:42.844"/>
-</kw>
-<status status="PASS" starttime="20220812 16:51:42.776" endtime="20220812 16:51:42.844"/>
-</kw>
-<kw name="List Price">
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>listprice</arg>
-<arg>18000</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20220812 16:51:42.845" level="INFO">Typing text '18000' into text field 'listprice'.</msg>
-<status status="PASS" starttime="20220812 16:51:42.845" endtime="20220812 16:51:42.949"/>
-</kw>
-<status status="PASS" starttime="20220812 16:51:42.844" endtime="20220812 16:51:42.950"/>
-</kw>
-<kw name="License Plate Number">
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>licenseplatenumber</arg>
-<arg>HDP77CA1</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20220812 16:51:42.952" level="INFO">Typing text 'HDP77CA1' into text field 'licenseplatenumber'.</msg>
-<status status="PASS" starttime="20220812 16:51:42.951" endtime="20220812 16:51:43.061"/>
-</kw>
-<status status="PASS" starttime="20220812 16:51:42.950" endtime="20220812 16:51:43.061"/>
-</kw>
-<kw name="Annual Mileage">
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>annualmileage</arg>
-<arg>70000</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20220812 16:51:43.062" level="INFO">Typing text '70000' into text field 'annualmileage'.</msg>
-<status status="PASS" starttime="20220812 16:51:43.062" endtime="20220812 16:51:43.170"/>
-</kw>
-<status status="PASS" starttime="20220812 16:51:43.061" endtime="20220812 16:51:43.170"/>
-</kw>
-<kw name="Click no button NEXT">
-<kw name="Click Button" library="SeleniumLibrary">
-<arg>nextenterinsurantdata</arg>
-<doc>Clicks the button identified by ``locator``.</doc>
-<msg timestamp="20220812 16:51:43.172" level="INFO">Clicking button 'nextenterinsurantdata'.</msg>
-<status status="PASS" starttime="20220812 16:51:43.172" endtime="20220812 16:51:43.275"/>
-</kw>
-<status status="PASS" starttime="20220812 16:51:43.171" endtime="20220812 16:51:43.276"/>
-</kw>
-<status status="PASS" starttime="20220812 16:51:42.379" endtime="20220812 16:51:43.276"/>
+<status status="PASS" starttime="20220815 18:37:18.882" endtime="20220815 18:37:18.897"/>
 </test>
-<test id="s1-t3" name="Enter Insurant Data" line="24">
-<kw name="First Name">
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>firstname</arg>
-<arg>Carl</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20220812 16:51:43.280" level="INFO">Typing text 'Carl' into text field 'firstname'.</msg>
-<status status="PASS" starttime="20220812 16:51:43.279" endtime="20220812 16:51:43.389"/>
+<test id="s1-t3" name="deve_retornar_status_400_quando_salvar_card_com_cvv_maior_que_999" line="52">
+<kw name="First Name" library="FakerLibrary">
+<var>${NOME1}</var>
+<msg timestamp="20220815 18:37:18.897" level="INFO">${NOME1} = Kevin</msg>
+<status status="PASS" starttime="20220815 18:37:18.897" endtime="20220815 18:37:18.897"/>
 </kw>
-<status status="PASS" starttime="20220812 16:51:43.279" endtime="20220812 16:51:43.389"/>
+<kw name="Last Name" library="FakerLibrary">
+<var>${SOBRENOME}</var>
+<msg timestamp="20220815 18:37:18.913" level="INFO">${SOBRENOME} = Moore</msg>
+<status status="PASS" starttime="20220815 18:37:18.913" endtime="20220815 18:37:18.913"/>
 </kw>
-<kw name="Last Name">
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>lastname</arg>
-<arg>Zeiss</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20220812 16:51:43.390" level="INFO">Typing text 'Zeiss' into text field 'lastname'.</msg>
-<status status="PASS" starttime="20220812 16:51:43.390" endtime="20220812 16:51:43.495"/>
+<kw name="Name" library="FakerLibrary">
+<var>${NOME}</var>
+<doc>:example 'John Doe'</doc>
+<msg timestamp="20220815 18:37:18.913" level="INFO">${NOME} = Abigail Garcia</msg>
+<status status="PASS" starttime="20220815 18:37:18.913" endtime="20220815 18:37:18.913"/>
 </kw>
-<status status="PASS" starttime="20220812 16:51:43.390" endtime="20220812 16:51:43.496"/>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>myssesion</arg>
+<arg>${URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220815 18:37:18.913" level="INFO">Creating Session using : alias=myssesion, url=http://localhost:9090, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220815 18:37:18.913" endtime="20220815 18:37:18.913"/>
 </kw>
-<kw name="Date of Birth">
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>birthdate</arg>
-<arg>09/03/1968</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20220812 16:51:43.497" level="INFO">Typing text '09/03/1968' into text field 'birthdate'.</msg>
-<status status="PASS" starttime="20220812 16:51:43.496" endtime="20220812 16:51:43.652"/>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{body}</var>
+<arg>brand=MASTER</arg>
+<arg>customerId=2</arg>
+<arg>cvc=1000</arg>
+<arg>expirationMoth=2</arg>
+<arg>expirationYear=2023</arg>
+<arg>holderName=${NOME}</arg>
+<arg>number=1001200230034004</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220815 18:37:18.913" level="INFO">&amp;{body} = { brand=MASTER | customerId=2 | cvc=1000 | expirationMoth=2 | expirationYear=2023 | holderName=Abigail Garcia | number=1001200230034004 }</msg>
+<status status="PASS" starttime="20220815 18:37:18.913" endtime="20220815 18:37:18.913"/>
 </kw>
-<status status="PASS" starttime="20220812 16:51:43.496" endtime="20220812 16:51:43.652"/>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220815 18:37:18.913" level="INFO">&amp;{headers} = { Content-Type=application/json }</msg>
+<status status="PASS" starttime="20220815 18:37:18.913" endtime="20220815 18:37:18.913"/>
 </kw>
-<kw name="Gender">
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>xpath=//*[@id="insurance-form"]/div/section[2]/div[4]/p/label[1]/span</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20220812 16:51:43.653" level="INFO">Clicking element 'xpath=//*[@id="insurance-form"]/div/section[2]/div[4]/p/label[1]/span'.</msg>
-<status status="PASS" starttime="20220812 16:51:43.653" endtime="20220812 16:51:43.695"/>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>myssesion</arg>
+<arg>/card</arg>
+<arg>json=${body}</arg>
+<arg>headers=${headers}</arg>
+<arg>expected_status=400</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20220815 18:37:18.929" level="INFO">POST Request : url=http://localhost:9090/card 
+ path_url=/card 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '164'} 
+ body=b'{"brand": "MASTER", "customerId": "2", "cvc": "1000", "expirationMoth": "2", "expirationYear": "2023", "holderName": "Abigail Garcia", "number": "1001200230034004"}' 
+ </msg>
+<msg timestamp="20220815 18:37:18.929" level="INFO">POST Response : url=http://localhost:9090/card 
+ status=400, reason= 
+ headers={'Content-Type': 'application/json;charset=UTF-8', 'Transfer-Encoding': 'chunked', 'Date': 'Mon, 15 Aug 2022 21:37:18 GMT', 'Connection': 'close'} 
+ body={"cvc":"cvc must be between 001 to 999"} 
+ </msg>
+<msg timestamp="20220815 18:37:18.929" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20220815 18:37:18.913" endtime="20220815 18:37:18.929"/>
 </kw>
-<status status="PASS" starttime="20220812 16:51:43.652" endtime="20220812 16:51:43.696"/>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>&lt;Response [400]&gt;</arg>
+<arg>${resp}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20220815 18:37:18.929" level="INFO">Argument types are:
+&lt;class 'str'&gt;
+&lt;class 'requests.models.Response'&gt;</msg>
+<status status="PASS" starttime="20220815 18:37:18.929" endtime="20220815 18:37:18.929"/>
 </kw>
-<kw name="Street Address">
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>streetaddress</arg>
-<arg>N Hammond Ave, 512</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20220812 16:51:43.696" level="INFO">Typing text 'N Hammond Ave, 512' into text field 'streetaddress'.</msg>
-<status status="PASS" starttime="20220812 16:51:43.696" endtime="20220812 16:51:43.824"/>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${resp.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220815 18:37:18.929" endtime="20220815 18:37:18.929"/>
 </kw>
-<status status="PASS" starttime="20220812 16:51:43.696" endtime="20220812 16:51:43.824"/>
-</kw>
-<kw name="Country">
-<kw name="Select From List By Value" library="SeleniumLibrary">
-<arg>country</arg>
-<arg>United States</arg>
-<doc>Selects options from selection list ``locator`` by ``values``.</doc>
-<msg timestamp="20220812 16:51:43.825" level="INFO">Selecting options from selection list 'country' by value United States.</msg>
-<status status="PASS" starttime="20220812 16:51:43.825" endtime="20220812 16:51:43.888"/>
-</kw>
-<status status="PASS" starttime="20220812 16:51:43.825" endtime="20220812 16:51:43.888"/>
-</kw>
-<kw name="Zip Code">
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>zipcode</arg>
-<arg>73013</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20220812 16:51:43.889" level="INFO">Typing text '73013' into text field 'zipcode'.</msg>
-<status status="PASS" starttime="20220812 16:51:43.889" endtime="20220812 16:51:43.982"/>
-</kw>
-<status status="PASS" starttime="20220812 16:51:43.889" endtime="20220812 16:51:43.983"/>
-</kw>
-<kw name="City">
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>city</arg>
-<arg>Oklahoma</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20220812 16:51:43.985" level="INFO">Typing text 'Oklahoma' into text field 'city'.</msg>
-<status status="PASS" starttime="20220812 16:51:43.984" endtime="20220812 16:51:44.075"/>
-</kw>
-<status status="PASS" starttime="20220812 16:51:43.983" endtime="20220812 16:51:44.075"/>
-</kw>
-<kw name="Occupation">
-<kw name="Select From List By Value" library="SeleniumLibrary">
-<arg>occupation</arg>
-<arg>Employee</arg>
-<doc>Selects options from selection list ``locator`` by ``values``.</doc>
-<msg timestamp="20220812 16:51:44.076" level="INFO">Selecting options from selection list 'occupation' by value Employee.</msg>
-<status status="PASS" starttime="20220812 16:51:44.076" endtime="20220812 16:51:44.149"/>
-</kw>
-<status status="PASS" starttime="20220812 16:51:44.076" endtime="20220812 16:51:44.150"/>
-</kw>
-<kw name="Hobbies">
-<kw name="Page Should Contain Checkbox" library="SeleniumLibrary">
-<arg>other</arg>
-<doc>Verifies checkbox ``locator`` is found from the current page.</doc>
-<msg timestamp="20220812 16:51:44.165" level="INFO">Current page contains checkbox 'other'.</msg>
-<status status="PASS" starttime="20220812 16:51:44.150" endtime="20220812 16:51:44.165"/>
-</kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>xpath=//*[@id="insurance-form"]/div/section[2]/div[10]/p/label[5]/span</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20220812 16:51:44.166" level="INFO">Clicking element 'xpath=//*[@id="insurance-form"]/div/section[2]/div[10]/p/label[5]/span'.</msg>
-<status status="PASS" starttime="20220812 16:51:44.165" endtime="20220812 16:51:44.220"/>
-</kw>
-<status status="PASS" starttime="20220812 16:51:44.150" endtime="20220812 16:51:44.221"/>
-</kw>
-<kw name="Website">
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>website</arg>
-<arg>${WEBSITE}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20220812 16:51:44.222" level="INFO">Typing text 'https://github.com/adailton1975/srlab-qa-test' into text field 'website'.</msg>
-<status status="PASS" starttime="20220812 16:51:44.221" endtime="20220812 16:51:44.460"/>
-</kw>
-<kw name="Click Button" library="SeleniumLibrary">
-<arg>nextenterproductdata</arg>
-<doc>Clicks the button identified by ``locator``.</doc>
-<msg timestamp="20220812 16:51:44.461" level="INFO">Clicking button 'nextenterproductdata'.</msg>
-<status status="PASS" starttime="20220812 16:51:44.461" endtime="20220812 16:51:44.528"/>
-</kw>
-<status status="PASS" starttime="20220812 16:51:44.221" endtime="20220812 16:51:44.528"/>
-</kw>
-<status status="PASS" starttime="20220812 16:51:43.278" endtime="20220812 16:51:44.529"/>
+<status status="PASS" starttime="20220815 18:37:18.897" endtime="20220815 18:37:18.929"/>
 </test>
-<test id="s1-t4" name="Enter Product Data" line="38">
-<kw name="Start Date">
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>startdate</arg>
-<arg>09/23/2022</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20220812 16:51:44.533" level="INFO">Typing text '09/23/2022' into text field 'startdate'.</msg>
-<status status="PASS" starttime="20220812 16:51:44.532" endtime="20220812 16:51:44.667"/>
+<test id="s1-t4" name="deve_retornar_status_400_quando_salvar_card_com_expiration_month_maior_que_12" line="63">
+<kw name="First Name" library="FakerLibrary">
+<var>${NOME1}</var>
+<msg timestamp="20220815 18:37:18.929" level="INFO">${NOME1} = Stephen</msg>
+<status status="PASS" starttime="20220815 18:37:18.929" endtime="20220815 18:37:18.929"/>
 </kw>
-<status status="PASS" starttime="20220812 16:51:44.532" endtime="20220812 16:51:44.667"/>
+<kw name="Last Name" library="FakerLibrary">
+<var>${SOBRENOME}</var>
+<msg timestamp="20220815 18:37:18.929" level="INFO">${SOBRENOME} = Cohen</msg>
+<status status="PASS" starttime="20220815 18:37:18.929" endtime="20220815 18:37:18.929"/>
 </kw>
-<kw name="Insurance Sum">
-<kw name="Select From List By Value" library="SeleniumLibrary">
-<arg>insurancesum</arg>
-<arg>25000000</arg>
-<doc>Selects options from selection list ``locator`` by ``values``.</doc>
-<msg timestamp="20220812 16:51:44.668" level="INFO">Selecting options from selection list 'insurancesum' by value 25000000.</msg>
-<status status="PASS" starttime="20220812 16:51:44.668" endtime="20220812 16:51:44.728"/>
+<kw name="Name" library="FakerLibrary">
+<var>${NOME}</var>
+<doc>:example 'John Doe'</doc>
+<msg timestamp="20220815 18:37:18.929" level="INFO">${NOME} = Kristen Rodriguez</msg>
+<status status="PASS" starttime="20220815 18:37:18.929" endtime="20220815 18:37:18.929"/>
 </kw>
-<status status="PASS" starttime="20220812 16:51:44.668" endtime="20220812 16:51:44.728"/>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>myssesion</arg>
+<arg>${URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220815 18:37:18.929" level="INFO">Creating Session using : alias=myssesion, url=http://localhost:9090, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220815 18:37:18.929" endtime="20220815 18:37:18.929"/>
 </kw>
-<kw name="Merit Rating">
-<kw name="Select From List By Value" library="SeleniumLibrary">
-<arg>meritrating</arg>
-<arg>Bonus 9</arg>
-<doc>Selects options from selection list ``locator`` by ``values``.</doc>
-<msg timestamp="20220812 16:51:44.729" level="INFO">Selecting options from selection list 'meritrating' by value Bonus 9.</msg>
-<status status="PASS" starttime="20220812 16:51:44.729" endtime="20220812 16:51:44.789"/>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{body}</var>
+<arg>brand=MASTER</arg>
+<arg>customerId=2</arg>
+<arg>cvc=222</arg>
+<arg>expirationMoth=22</arg>
+<arg>expirationYear=2023</arg>
+<arg>holderName=${NOME}</arg>
+<arg>number=1001200230034004</arg>
+<arg>status=False</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220815 18:37:18.929" level="INFO">&amp;{body} = { brand=MASTER | customerId=2 | cvc=222 | expirationMoth=22 | expirationYear=2023 | holderName=Kristen Rodriguez | number=1001200230034004 | status=False }</msg>
+<status status="PASS" starttime="20220815 18:37:18.929" endtime="20220815 18:37:18.929"/>
 </kw>
-<status status="PASS" starttime="20220812 16:51:44.728" endtime="20220812 16:51:44.789"/>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220815 18:37:18.929" level="INFO">&amp;{headers} = { Content-Type=application/json }</msg>
+<status status="PASS" starttime="20220815 18:37:18.929" endtime="20220815 18:37:18.929"/>
 </kw>
-<kw name="Damage Insurance">
-<kw name="Select From List By Value" library="SeleniumLibrary">
-<arg>damageinsurance</arg>
-<arg>Full Coverage</arg>
-<doc>Selects options from selection list ``locator`` by ``values``.</doc>
-<msg timestamp="20220812 16:51:44.789" level="INFO">Selecting options from selection list 'damageinsurance' by value Full Coverage.</msg>
-<status status="PASS" starttime="20220812 16:51:44.789" endtime="20220812 16:51:44.855"/>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>myssesion</arg>
+<arg>/card</arg>
+<arg>json=${body}</arg>
+<arg>headers=${headers}</arg>
+<arg>expected_status=400</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20220815 18:37:18.960" level="INFO">POST Request : url=http://localhost:9090/card 
+ path_url=/card 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '186'} 
+ body=b'{"brand": "MASTER", "customerId": "2", "cvc": "222", "expirationMoth": "22", "expirationYear": "2023", "holderName": "Kristen Rodriguez", "number": "1001200230034004", "status": "False"}' 
+ </msg>
+<msg timestamp="20220815 18:37:18.960" level="INFO">POST Response : url=http://localhost:9090/card 
+ status=400, reason= 
+ headers={'Content-Type': 'application/json;charset=UTF-8', 'Transfer-Encoding': 'chunked', 'Date': 'Mon, 15 Aug 2022 21:37:18 GMT', 'Connection': 'close'} 
+ body={"expirationMoth":"Expiration month must be less then 12"} 
+ </msg>
+<msg timestamp="20220815 18:37:18.960" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20220815 18:37:18.929" endtime="20220815 18:37:18.960"/>
 </kw>
-<status status="PASS" starttime="20220812 16:51:44.789" endtime="20220812 16:51:44.855"/>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>&lt;Response [400]&gt;</arg>
+<arg>${resp}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20220815 18:37:18.960" level="INFO">Argument types are:
+&lt;class 'str'&gt;
+&lt;class 'requests.models.Response'&gt;</msg>
+<status status="PASS" starttime="20220815 18:37:18.960" endtime="20220815 18:37:18.960"/>
 </kw>
-<kw name="Optional Products">
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>xpath=//*[@id="insurance-form"]/div/section[3]/div[5]/p/label[1]/span</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20220812 16:51:44.857" level="INFO">Clicking element 'xpath=//*[@id="insurance-form"]/div/section[3]/div[5]/p/label[1]/span'.</msg>
-<status status="PASS" starttime="20220812 16:51:44.857" endtime="20220812 16:51:44.907"/>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${resp.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220815 18:37:18.960" endtime="20220815 18:37:18.960"/>
 </kw>
-<status status="PASS" starttime="20220812 16:51:44.857" endtime="20220812 16:51:44.908"/>
-</kw>
-<kw name="Courtesy Car">
-<kw name="Select From List By Value" library="SeleniumLibrary">
-<arg>courtesycar</arg>
-<arg>Yes</arg>
-<doc>Selects options from selection list ``locator`` by ``values``.</doc>
-<msg timestamp="20220812 16:51:44.909" level="INFO">Selecting options from selection list 'courtesycar' by value Yes.</msg>
-<status status="PASS" starttime="20220812 16:51:44.909" endtime="20220812 16:51:44.969"/>
-</kw>
-<kw name="Click Button" library="SeleniumLibrary">
-<arg>nextselectpriceoption</arg>
-<doc>Clicks the button identified by ``locator``.</doc>
-<msg timestamp="20220812 16:51:44.970" level="INFO">Clicking button 'nextselectpriceoption'.</msg>
-<status status="PASS" starttime="20220812 16:51:44.970" endtime="20220812 16:51:45.036"/>
-</kw>
-<status status="PASS" starttime="20220812 16:51:44.908" endtime="20220812 16:51:45.036"/>
-</kw>
-<status status="PASS" starttime="20220812 16:51:44.531" endtime="20220812 16:51:45.036"/>
+<status status="PASS" starttime="20220815 18:37:18.929" endtime="20220815 18:37:18.960"/>
 </test>
-<test id="s1-t5" name="Select Price Option" line="46">
-<kw name="Select Option">
-<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
-<arg>xpath=//*[@id="priceTable"]/tfoot/tr/th[2]/label[3]/span</arg>
-<doc>Waits until the element ``locator`` is enabled.</doc>
-<status status="PASS" starttime="20220812 16:51:45.039" endtime="20220812 16:51:45.074"/>
+<test id="s1-t5" name="deve_retornar_status_400_quando_salvar_card_com_expiration_year_menor_que_2022" line="73">
+<kw name="First Name" library="FakerLibrary">
+<var>${NOME1}</var>
+<msg timestamp="20220815 18:37:18.960" level="INFO">${NOME1} = Joseph</msg>
+<status status="PASS" starttime="20220815 18:37:18.960" endtime="20220815 18:37:18.960"/>
 </kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>//*[@id="priceTable"]/tfoot/tr/th[2]/label[3]/span</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20220812 16:51:45.075" level="INFO">Clicking element '//*[@id="priceTable"]/tfoot/tr/th[2]/label[3]/span'.</msg>
-<status status="PASS" starttime="20220812 16:51:45.075" endtime="20220812 16:51:45.124"/>
+<kw name="Last Name" library="FakerLibrary">
+<var>${SOBRENOME}</var>
+<msg timestamp="20220815 18:37:18.977" level="INFO">${SOBRENOME} = Roman</msg>
+<status status="PASS" starttime="20220815 18:37:18.976" endtime="20220815 18:37:18.977"/>
 </kw>
-<kw name="Sleep" library="BuiltIn">
-<arg>5s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20220812 16:51:50.138" level="INFO">Slept 5 seconds</msg>
-<status status="PASS" starttime="20220812 16:51:45.124" endtime="20220812 16:51:50.138"/>
+<kw name="Name" library="FakerLibrary">
+<var>${NOME}</var>
+<doc>:example 'John Doe'</doc>
+<msg timestamp="20220815 18:37:18.977" level="INFO">${NOME} = Henry Moore</msg>
+<status status="PASS" starttime="20220815 18:37:18.977" endtime="20220815 18:37:18.977"/>
 </kw>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>Download Quote</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20220812 16:51:50.138" endtime="20220812 16:51:50.162"/>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>myssesion</arg>
+<arg>${URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220815 18:37:18.977" level="INFO">Creating Session using : alias=myssesion, url=http://localhost:9090, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220815 18:37:18.977" endtime="20220815 18:37:18.977"/>
 </kw>
-<kw name="Click Button" library="SeleniumLibrary">
-<arg>nextsendquote</arg>
-<doc>Clicks the button identified by ``locator``.</doc>
-<msg timestamp="20220812 16:51:50.162" level="INFO">Clicking button 'nextsendquote'.</msg>
-<status status="PASS" starttime="20220812 16:51:50.162" endtime="20220812 16:51:50.223"/>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{body}</var>
+<arg>brand=MASTER</arg>
+<arg>customerId=2</arg>
+<arg>cvc=333</arg>
+<arg>expirationMoth=2</arg>
+<arg>expirationYear=2021</arg>
+<arg>holderName=${NOME}</arg>
+<arg>number=1001200230034004</arg>
+<arg>status=False</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220815 18:37:18.977" level="INFO">&amp;{body} = { brand=MASTER | customerId=2 | cvc=333 | expirationMoth=2 | expirationYear=2021 | holderName=Henry Moore | number=1001200230034004 | status=False }</msg>
+<status status="PASS" starttime="20220815 18:37:18.977" endtime="20220815 18:37:18.977"/>
 </kw>
-<status status="PASS" starttime="20220812 16:51:45.039" endtime="20220812 16:51:50.223"/>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220815 18:37:18.977" level="INFO">&amp;{headers} = { Content-Type=application/json }</msg>
+<status status="PASS" starttime="20220815 18:37:18.977" endtime="20220815 18:37:18.977"/>
 </kw>
-<status status="PASS" starttime="20220812 16:51:45.038" endtime="20220812 16:51:50.224"/>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>myssesion</arg>
+<arg>/card</arg>
+<arg>json=${body}</arg>
+<arg>headers=${headers}</arg>
+<arg>expected_status=400</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20220815 18:37:18.993" level="INFO">POST Request : url=http://localhost:9090/card 
+ path_url=/card 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '179'} 
+ body=b'{"brand": "MASTER", "customerId": "2", "cvc": "333", "expirationMoth": "2", "expirationYear": "2021", "holderName": "Henry Moore", "number": "1001200230034004", "status": "False"}' 
+ </msg>
+<msg timestamp="20220815 18:37:18.993" level="INFO">POST Response : url=http://localhost:9090/card 
+ status=400, reason= 
+ headers={'Content-Type': 'application/json;charset=UTF-8', 'Transfer-Encoding': 'chunked', 'Date': 'Mon, 15 Aug 2022 21:37:18 GMT', 'Connection': 'close'} 
+ body={"expirationYear":"Expiration year must be greater than the current one"} 
+ </msg>
+<msg timestamp="20220815 18:37:18.993" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20220815 18:37:18.977" endtime="20220815 18:37:18.993"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>&lt;Response [400]&gt;</arg>
+<arg>${resp}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20220815 18:37:18.993" level="INFO">Argument types are:
+&lt;class 'str'&gt;
+&lt;class 'requests.models.Response'&gt;</msg>
+<status status="PASS" starttime="20220815 18:37:18.993" endtime="20220815 18:37:18.993"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${resp.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220815 18:37:18.993" endtime="20220815 18:37:18.993"/>
+</kw>
+<status status="PASS" starttime="20220815 18:37:18.960" endtime="20220815 18:37:18.993"/>
 </test>
-<test id="s1-t6" name="Send Quote" line="49">
-<kw name="E-Mail">
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>email</arg>
-<arg>${EMAIL}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20220812 16:51:50.228" level="INFO">Typing text 'adailton.1975@gmail.com' into text field 'email'.</msg>
-<status status="PASS" starttime="20220812 16:51:50.227" endtime="20220812 16:51:50.437"/>
+<test id="s1-t6" name="deve_retornar_status_400_quando_salvar_card_com_number_de_15_digitos" line="84">
+<kw name="First Name" library="FakerLibrary">
+<var>${NOME1}</var>
+<msg timestamp="20220815 18:37:19.008" level="INFO">${NOME1} = Jessica</msg>
+<status status="PASS" starttime="20220815 18:37:19.008" endtime="20220815 18:37:19.008"/>
 </kw>
-<status status="PASS" starttime="20220812 16:51:50.227" endtime="20220812 16:51:50.437"/>
+<kw name="Last Name" library="FakerLibrary">
+<var>${SOBRENOME}</var>
+<msg timestamp="20220815 18:37:19.008" level="INFO">${SOBRENOME} = Hill</msg>
+<status status="PASS" starttime="20220815 18:37:19.008" endtime="20220815 18:37:19.008"/>
 </kw>
-<kw name="Phone">
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>phone</arg>
-<arg>${PHONE}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20220812 16:51:50.438" level="INFO">Typing text '5511988029719' into text field 'phone'.</msg>
-<status status="PASS" starttime="20220812 16:51:50.438" endtime="20220812 16:51:50.581"/>
+<kw name="Name" library="FakerLibrary">
+<var>${NOME}</var>
+<doc>:example 'John Doe'</doc>
+<msg timestamp="20220815 18:37:19.008" level="INFO">${NOME} = Margaret Peck</msg>
+<status status="PASS" starttime="20220815 18:37:19.008" endtime="20220815 18:37:19.008"/>
 </kw>
-<status status="PASS" starttime="20220812 16:51:50.437" endtime="20220812 16:51:50.581"/>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>myssesion</arg>
+<arg>${URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220815 18:37:19.008" level="INFO">Creating Session using : alias=myssesion, url=http://localhost:9090, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220815 18:37:19.008" endtime="20220815 18:37:19.008"/>
 </kw>
-<kw name="Username">
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>username</arg>
-<arg>${USERNAME}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20220812 16:51:50.582" level="INFO">Typing text 'Uere_Isma_Manei_Lol' into text field 'username'.</msg>
-<status status="PASS" starttime="20220812 16:51:50.582" endtime="20220812 16:51:50.725"/>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{body}</var>
+<arg>brand=MASTER</arg>
+<arg>customerId=2</arg>
+<arg>cvc=444</arg>
+<arg>expirationMoth=2</arg>
+<arg>expirationYear=2023</arg>
+<arg>holderName=${NOME}</arg>
+<arg>number=100120023003400</arg>
+<arg>status=False</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220815 18:37:19.008" level="INFO">&amp;{body} = { brand=MASTER | customerId=2 | cvc=444 | expirationMoth=2 | expirationYear=2023 | holderName=Margaret Peck | number=100120023003400 | status=False }</msg>
+<status status="PASS" starttime="20220815 18:37:19.008" endtime="20220815 18:37:19.008"/>
 </kw>
-<status status="PASS" starttime="20220812 16:51:50.581" endtime="20220812 16:51:50.725"/>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220815 18:37:19.008" level="INFO">&amp;{headers} = { Content-Type=application/json }</msg>
+<status status="PASS" starttime="20220815 18:37:19.008" endtime="20220815 18:37:19.008"/>
 </kw>
-<kw name="Password">
-<kw name="Input Password" library="SeleniumLibrary">
-<arg>password</arg>
-<arg>${PWD}</arg>
-<doc>Types the given password into the text field identified by ``locator``.</doc>
-<msg timestamp="20220812 16:51:50.727" level="INFO">Typing password into text field 'password'.</msg>
-<msg timestamp="20220812 16:51:50.762" level="INFO">Temporally setting log level to: NONE</msg>
-<msg timestamp="20220812 16:51:50.837" level="INFO">Log level changed from NONE to INFO.</msg>
-<status status="PASS" starttime="20220812 16:51:50.727" endtime="20220812 16:51:50.837"/>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>myssesion</arg>
+<arg>/card</arg>
+<arg>json=${body}</arg>
+<arg>headers=${headers}</arg>
+<arg>expected_status=400</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20220815 18:37:19.024" level="INFO">POST Request : url=http://localhost:9090/card 
+ path_url=/card 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '180'} 
+ body=b'{"brand": "MASTER", "customerId": "2", "cvc": "444", "expirationMoth": "2", "expirationYear": "2023", "holderName": "Margaret Peck", "number": "100120023003400", "status": "False"}' 
+ </msg>
+<msg timestamp="20220815 18:37:19.024" level="INFO">POST Response : url=http://localhost:9090/card 
+ status=400, reason= 
+ headers={'Content-Type': 'application/json;charset=UTF-8', 'Transfer-Encoding': 'chunked', 'Date': 'Mon, 15 Aug 2022 21:37:18 GMT', 'Connection': 'close'} 
+ body={"number":"Number must have a 16 numbers"} 
+ </msg>
+<msg timestamp="20220815 18:37:19.024" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20220815 18:37:19.008" endtime="20220815 18:37:19.024"/>
 </kw>
-<status status="PASS" starttime="20220812 16:51:50.726" endtime="20220812 16:51:50.837"/>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>&lt;Response [400]&gt;</arg>
+<arg>${resp}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20220815 18:37:19.024" level="INFO">Argument types are:
+&lt;class 'str'&gt;
+&lt;class 'requests.models.Response'&gt;</msg>
+<status status="PASS" starttime="20220815 18:37:19.024" endtime="20220815 18:37:19.024"/>
 </kw>
-<kw name="Confirm Password">
-<kw name="Input Password" library="SeleniumLibrary">
-<arg>confirmpassword</arg>
-<arg>${PWD}</arg>
-<doc>Types the given password into the text field identified by ``locator``.</doc>
-<msg timestamp="20220812 16:51:50.838" level="INFO">Typing password into text field 'confirmpassword'.</msg>
-<msg timestamp="20220812 16:51:50.873" level="INFO">Temporally setting log level to: NONE</msg>
-<msg timestamp="20220812 16:51:50.957" level="INFO">Log level changed from NONE to INFO.</msg>
-<status status="PASS" starttime="20220812 16:51:50.838" endtime="20220812 16:51:50.957"/>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${resp.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220815 18:37:19.024" endtime="20220815 18:37:19.024"/>
 </kw>
-<status status="PASS" starttime="20220812 16:51:50.837" endtime="20220812 16:51:50.958"/>
-</kw>
-<kw name="Comments">
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>Comments</arg>
-<arg>${COMMENTS}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20220812 16:51:50.959" level="INFO">Typing text '"Well, the best way to get to know new software is to use an example to try it out. This sample application has been"' into text field 'Comments'.</msg>
-<status status="PASS" starttime="20220812 16:51:50.959" endtime="20220812 16:51:51.355"/>
-</kw>
-<status status="PASS" starttime="20220812 16:51:50.958" endtime="20220812 16:51:51.355"/>
-</kw>
-<kw name="Main page">
-<kw name="Page Should Contain" library="SeleniumLibrary">
-<arg>Main page</arg>
-<doc>Verifies that current page contains ``text``.</doc>
-<msg timestamp="20220812 16:51:51.374" level="INFO">Current page contains text 'Main page'.</msg>
-<status status="PASS" starttime="20220812 16:51:51.359" endtime="20220812 16:51:51.374"/>
-</kw>
-<kw name="Click Button" library="SeleniumLibrary">
-<arg>sendemail</arg>
-<doc>Clicks the button identified by ``locator``.</doc>
-<msg timestamp="20220812 16:51:51.375" level="INFO">Clicking button 'sendemail'.</msg>
-<status status="PASS" starttime="20220812 16:51:51.374" endtime="20220812 16:51:51.427"/>
-</kw>
-<status status="PASS" starttime="20220812 16:51:51.359" endtime="20220812 16:51:51.427"/>
-</kw>
-<kw name="Validar Pop Up Send Email Success">
-<kw name="Sleep" library="BuiltIn">
-<arg>10s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20220812 16:52:01.442" level="INFO">Slept 10 seconds</msg>
-<status status="PASS" starttime="20220812 16:51:51.428" endtime="20220812 16:52:01.442"/>
-</kw>
-<kw name="Wait Until Page Contains" library="SeleniumLibrary">
-<arg>Sending e-mail success!</arg>
-<doc>Waits until ``text`` appears on the current page.</doc>
-<status status="PASS" starttime="20220812 16:52:01.442" endtime="20220812 16:52:01.455"/>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<arg>5s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20220812 16:52:06.459" level="INFO">Slept 5 seconds</msg>
-<status status="PASS" starttime="20220812 16:52:01.455" endtime="20220812 16:52:06.459"/>
-</kw>
-<kw name="Page Should Contain" library="SeleniumLibrary">
-<arg>Sending e-mail success!</arg>
-<doc>Verifies that current page contains ``text``.</doc>
-<msg timestamp="20220812 16:52:06.471" level="INFO">Current page contains text 'Sending e-mail success!'.</msg>
-<status status="PASS" starttime="20220812 16:52:06.459" endtime="20220812 16:52:06.471"/>
-</kw>
-<status status="PASS" starttime="20220812 16:51:51.428" endtime="20220812 16:52:06.471"/>
-</kw>
-<kw name="Click Button" library="SeleniumLibrary">
-<arg>xpath=/html/body/div[4]/div[7]/div/button</arg>
-<doc>Clicks the button identified by ``locator``.</doc>
-<msg timestamp="20220812 16:52:06.472" level="INFO">Clicking button 'xpath=/html/body/div[4]/div[7]/div/button'.</msg>
-<status status="PASS" starttime="20220812 16:52:06.472" endtime="20220812 16:52:06.523"/>
-</kw>
-<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
-<doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20220812 16:52:06.524" endtime="20220812 16:52:08.759"/>
-</kw>
-<status status="PASS" starttime="20220812 16:51:50.226" endtime="20220812 16:52:08.760"/>
+<status status="PASS" starttime="20220815 18:37:19.008" endtime="20220815 18:37:19.024"/>
 </test>
-<doc>First Page</doc>
-<status status="PASS" starttime="20220812 16:51:33.661" endtime="20220812 16:52:08.761"/>
+<test id="s1-t7" name="deve_retornar_status_400_quando_salvar_card_com_number_de_17_digitos" line="95">
+<kw name="First Name" library="FakerLibrary">
+<var>${NOME1}</var>
+<msg timestamp="20220815 18:37:19.024" level="INFO">${NOME1} = Sandra</msg>
+<status status="PASS" starttime="20220815 18:37:19.024" endtime="20220815 18:37:19.024"/>
+</kw>
+<kw name="Last Name" library="FakerLibrary">
+<var>${SOBRENOME}</var>
+<msg timestamp="20220815 18:37:19.024" level="INFO">${SOBRENOME} = Horton</msg>
+<status status="PASS" starttime="20220815 18:37:19.024" endtime="20220815 18:37:19.024"/>
+</kw>
+<kw name="Name" library="FakerLibrary">
+<var>${NOME}</var>
+<doc>:example 'John Doe'</doc>
+<msg timestamp="20220815 18:37:19.024" level="INFO">${NOME} = Tracey Anderson</msg>
+<status status="PASS" starttime="20220815 18:37:19.024" endtime="20220815 18:37:19.024"/>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>myssesion</arg>
+<arg>${URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220815 18:37:19.040" level="INFO">Creating Session using : alias=myssesion, url=http://localhost:9090, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220815 18:37:19.024" endtime="20220815 18:37:19.040"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{body}</var>
+<arg>brand=MASTER</arg>
+<arg>customerId=2</arg>
+<arg>cvc=555</arg>
+<arg>expirationMoth=2</arg>
+<arg>expirationYear=2023</arg>
+<arg>holderName=${NOME}</arg>
+<arg>number=10012002300340041</arg>
+<arg>status=False</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220815 18:37:19.040" level="INFO">&amp;{body} = { brand=MASTER | customerId=2 | cvc=555 | expirationMoth=2 | expirationYear=2023 | holderName=Tracey Anderson | number=10012002300340041 | status=False }</msg>
+<status status="PASS" starttime="20220815 18:37:19.040" endtime="20220815 18:37:19.040"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220815 18:37:19.040" level="INFO">&amp;{headers} = { Content-Type=application/json }</msg>
+<status status="PASS" starttime="20220815 18:37:19.040" endtime="20220815 18:37:19.040"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>myssesion</arg>
+<arg>/card</arg>
+<arg>json=${body}</arg>
+<arg>headers=${headers}</arg>
+<arg>expected_status=400</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20220815 18:37:19.056" level="INFO">POST Request : url=http://localhost:9090/card 
+ path_url=/card 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '184'} 
+ body=b'{"brand": "MASTER", "customerId": "2", "cvc": "555", "expirationMoth": "2", "expirationYear": "2023", "holderName": "Tracey Anderson", "number": "10012002300340041", "status": "False"}' 
+ </msg>
+<msg timestamp="20220815 18:37:19.056" level="INFO">POST Response : url=http://localhost:9090/card 
+ status=400, reason= 
+ headers={'Content-Type': 'application/json;charset=UTF-8', 'Transfer-Encoding': 'chunked', 'Date': 'Mon, 15 Aug 2022 21:37:18 GMT', 'Connection': 'close'} 
+ body={"number":"Number must have a 16 numbers"} 
+ </msg>
+<msg timestamp="20220815 18:37:19.056" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20220815 18:37:19.040" endtime="20220815 18:37:19.056"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>&lt;Response [400]&gt;</arg>
+<arg>${resp}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20220815 18:37:19.056" level="INFO">Argument types are:
+&lt;class 'str'&gt;
+&lt;class 'requests.models.Response'&gt;</msg>
+<status status="PASS" starttime="20220815 18:37:19.056" endtime="20220815 18:37:19.056"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${resp.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220815 18:37:19.056" endtime="20220815 18:37:19.056"/>
+</kw>
+<status status="PASS" starttime="20220815 18:37:19.024" endtime="20220815 18:37:19.056"/>
+</test>
+<test id="s1-t8" name="deve_deletar_um_card_salvo_no_sistema" line="106">
+<kw name="First Name" library="FakerLibrary">
+<var>${NOME1}</var>
+<msg timestamp="20220815 18:37:19.056" level="INFO">${NOME1} = Robert</msg>
+<status status="PASS" starttime="20220815 18:37:19.056" endtime="20220815 18:37:19.056"/>
+</kw>
+<kw name="Last Name" library="FakerLibrary">
+<var>${SOBRENOME}</var>
+<msg timestamp="20220815 18:37:19.056" level="INFO">${SOBRENOME} = Newton</msg>
+<status status="PASS" starttime="20220815 18:37:19.056" endtime="20220815 18:37:19.071"/>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>myssesion</arg>
+<arg>${URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220815 18:37:19.071" level="INFO">Creating Session using : alias=myssesion, url=http://localhost:9090, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220815 18:37:19.071" endtime="20220815 18:37:19.071"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{body}</var>
+<arg>birthDate=1975-09-14</arg>
+<arg>lastName=${NOME1}</arg>
+<arg>name=${SOBRENOME}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220815 18:37:19.071" level="INFO">&amp;{body} = { birthDate=1975-09-14 | lastName=Robert | name=Newton }</msg>
+<status status="PASS" starttime="20220815 18:37:19.071" endtime="20220815 18:37:19.071"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220815 18:37:19.071" level="INFO">&amp;{headers} = { Content-Type=application/json }</msg>
+<status status="PASS" starttime="20220815 18:37:19.071" endtime="20220815 18:37:19.071"/>
+</kw>
+<kw name="Post Request" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>myssesion</arg>
+<arg>/customer</arg>
+<arg>json=${body}</arg>
+<arg>headers=${headers}</arg>
+<doc>*DEPRECATED* Please use `POST On Session` instead.</doc>
+<msg timestamp="20220815 18:37:19.071" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg timestamp="20220815 18:37:19.071" level="INFO">POST Request : url=http://localhost:9090/customer 
+ path_url=/customer 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '67'} 
+ body=b'{"birthDate": "1975-09-14", "lastName": "Robert", "name": "Newton"}' 
+ </msg>
+<msg timestamp="20220815 18:37:19.071" level="INFO">POST Response : url=http://localhost:9090/customer 
+ status=200, reason= 
+ headers={'Content-Type': 'application/json;charset=UTF-8', 'Transfer-Encoding': 'chunked', 'Date': 'Mon, 15 Aug 2022 21:37:18 GMT'} 
+ body={"name":"Newton","lastName":"Robert","birthDate":"1975-09-14","id":135,"cards":[]} 
+ </msg>
+<msg timestamp="20220815 18:37:19.071" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220815 18:37:19.071" endtime="20220815 18:37:19.071"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${resp.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220815 18:37:19.071" endtime="20220815 18:37:19.071"/>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>myssesion</arg>
+<arg>${URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220815 18:37:19.071" level="INFO">Creating Session using : alias=myssesion, url=http://localhost:9090, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220815 18:37:19.071" endtime="20220815 18:37:19.071"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{body}</var>
+<arg>brand=MASTER</arg>
+<arg>customerId=2</arg>
+<arg>cvc=555</arg>
+<arg>expirationMoth=2</arg>
+<arg>expirationYear=2023</arg>
+<arg>holderName=${SOBRENOME} + ${NOME1}</arg>
+<arg>number=1001200230034004</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220815 18:37:19.071" level="INFO">&amp;{body} = { brand=MASTER | customerId=2 | cvc=555 | expirationMoth=2 | expirationYear=2023 | holderName=Newton + Robert | number=1001200230034004 }</msg>
+<status status="PASS" starttime="20220815 18:37:19.071" endtime="20220815 18:37:19.071"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220815 18:37:19.087" level="INFO">&amp;{headers} = { Content-Type=application/json }</msg>
+<status status="PASS" starttime="20220815 18:37:19.087" endtime="20220815 18:37:19.087"/>
+</kw>
+<kw name="Post Request" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>myssesion</arg>
+<arg>/card</arg>
+<arg>json=${body}</arg>
+<arg>headers=${headers}</arg>
+<doc>*DEPRECATED* Please use `POST On Session` instead.</doc>
+<msg timestamp="20220815 18:37:19.087" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg timestamp="20220815 18:37:19.087" level="INFO">POST Request : url=http://localhost:9090/card 
+ path_url=/card 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '164'} 
+ body=b'{"brand": "MASTER", "customerId": "2", "cvc": "555", "expirationMoth": "2", "expirationYear": "2023", "holderName": "Newton + Robert", "number": "1001200230034004"}' 
+ </msg>
+<msg timestamp="20220815 18:37:19.087" level="INFO">POST Response : url=http://localhost:9090/card 
+ status=200, reason= 
+ headers={'Content-Type': 'application/json;charset=UTF-8', 'Transfer-Encoding': 'chunked', 'Date': 'Mon, 15 Aug 2022 21:37:18 GMT'} 
+ body={"customerId":2,"number":"1001200230034004","holderName":"Newton + Robert","brand":"MASTER","expirationMoth":2,"expirationYear":2023,"cvc":"555","id":136} 
+ </msg>
+<msg timestamp="20220815 18:37:19.103" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220815 18:37:19.087" endtime="20220815 18:37:19.103"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${resp.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220815 18:37:19.103" endtime="20220815 18:37:19.103"/>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>myssesion</arg>
+<arg>${URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220815 18:37:19.103" level="INFO">Creating Session using : alias=myssesion, url=http://localhost:9090, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220815 18:37:19.103" endtime="20220815 18:37:19.103"/>
+</kw>
+<kw name="DELETE On Session" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>myssesion</arg>
+<arg>card/134</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<msg timestamp="20220815 18:37:19.119" level="INFO">DELETE Request : url=http://localhost:9090/card/134 
+ path_url=/card/134 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg timestamp="20220815 18:37:19.119" level="INFO">DELETE Response : url=http://localhost:9090/card/134 
+ status=404, reason= 
+ headers={'Content-Type': 'application/json;charset=UTF-8', 'Transfer-Encoding': 'chunked', 'Date': 'Mon, 15 Aug 2022 21:37:18 GMT'} 
+ body={"timestamp":"2022-08-15T21:37:19.118+0000","status":404,"error":"Not Found","message":"Card not found","path":"/card/134"} 
+ </msg>
+<msg timestamp="20220815 18:37:19.119" level="FAIL">HTTPError: 404 Client Error:  for url: http://localhost:9090/card/134</msg>
+<status status="FAIL" starttime="20220815 18:37:19.103" endtime="20220815 18:37:19.119"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="NOT RUN" starttime="20220815 18:37:19.119" endtime="20220815 18:37:19.119"/>
+</kw>
+<status status="FAIL" starttime="20220815 18:37:19.056" endtime="20220815 18:37:19.119">HTTPError: 404 Client Error:  for url: http://localhost:9090/card/134</status>
+</test>
+<test id="s1-t9" name="deve_retornar_status_404_ao_deletar_um_card_com_id_nao_salvo_no_sistema" line="131">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>myssesion</arg>
+<arg>${URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220815 18:37:19.119" level="INFO">Creating Session using : alias=myssesion, url=http://localhost:9090, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220815 18:37:19.119" endtime="20220815 18:37:19.119"/>
+</kw>
+<kw name="DELETE On Session" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>myssesion</arg>
+<arg>card/12</arg>
+<arg>expected_status=404</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<msg timestamp="20220815 18:37:19.134" level="INFO">DELETE Request : url=http://localhost:9090/card/12 
+ path_url=/card/12 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg timestamp="20220815 18:37:19.134" level="INFO">DELETE Response : url=http://localhost:9090/card/12 
+ status=404, reason= 
+ headers={'Content-Type': 'application/json;charset=UTF-8', 'Transfer-Encoding': 'chunked', 'Date': 'Mon, 15 Aug 2022 21:37:18 GMT'} 
+ body={"timestamp":"2022-08-15T21:37:19.134+0000","status":404,"error":"Not Found","message":"Card not found","path":"/card/12"} 
+ </msg>
+<msg timestamp="20220815 18:37:19.134" level="INFO">${resp} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20220815 18:37:19.119" endtime="20220815 18:37:19.134"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220815 18:37:19.134" level="INFO">&amp;{headers} = { Content-Type=application/json }</msg>
+<status status="PASS" starttime="20220815 18:37:19.134" endtime="20220815 18:37:19.134"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>&lt;Response [404]&gt;</arg>
+<arg>${resp}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20220815 18:37:19.134" level="INFO">Argument types are:
+&lt;class 'str'&gt;
+&lt;class 'requests.models.Response'&gt;</msg>
+<status status="PASS" starttime="20220815 18:37:19.134" endtime="20220815 18:37:19.134"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${resp.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220815 18:37:19.134" endtime="20220815 18:37:19.134"/>
+</kw>
+<status status="PASS" starttime="20220815 18:37:19.119" endtime="20220815 18:37:19.134"/>
+</test>
+<doc>Teste de API</doc>
+<status status="FAIL" starttime="20220815 18:37:18.335" endtime="20220815 18:37:19.134"/>
 </suite>
 <statistics>
 <total>
-<stat pass="6" fail="0" skip="0">All Tests</stat>
+<stat pass="8" fail="1" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="6" fail="0" skip="0" id="s1" name="Tricentis">Tricentis</stat>
+<stat pass="8" fail="1" skip="0" id="s1" name="API TEST">API TEST</stat>
 </suite>
 </statistics>
 <errors>
+<msg timestamp="20220815 18:37:19.071" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg timestamp="20220815 18:37:19.087" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
 </errors>
 </robot>

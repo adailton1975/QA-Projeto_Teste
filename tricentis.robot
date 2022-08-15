@@ -1,5 +1,5 @@
 ***Settings***
-Documentation    First Page
+Documentation    Teste WEB Tricents Page
 Resource     resources.robot
 Library    OperatingSystem
 Library    Screenshot

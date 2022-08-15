@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.10.6 on win32)" generated="20220815 18:33:43.327" rpa="false" schemaversion="3">
+<suite id="s1" name="QA-Projeto Teste" source="C:\Users\jonny\dev\projetos-python\QA-Projeto_Teste">
+<suite id="s1-s1" name="API TEST" source="C:\Users\jonny\dev\projetos-python\QA-Projeto_Teste\API_TEST.robot">
+<test id="s1-s1-t1" name="deve_retornar_status_400_quando_salvar_card_com_cvv_maior_que_999" line="52">
+<kw name="First Name" library="FakerLibrary">
+<var>${NOME1}</var>
+<msg timestamp="20220815 18:33:43.966" level="INFO">${NOME1} = Jennifer</msg>
+<status status="PASS" starttime="20220815 18:33:43.966" endtime="20220815 18:33:43.969"/>
+</kw>
+<kw name="Last Name" library="FakerLibrary">
+<var>${SOBRENOME}</var>
+<msg timestamp="20220815 18:33:43.971" level="INFO">${SOBRENOME} = Petty</msg>
+<status status="PASS" starttime="20220815 18:33:43.969" endtime="20220815 18:33:43.973"/>
+</kw>
+<kw name="Name" library="FakerLibrary">
+<var>${NOME}</var>
+<doc>:example 'John Doe'</doc>
+<msg timestamp="20220815 18:33:43.974" level="INFO">${NOME} = Jason Hall</msg>
+<status status="PASS" starttime="20220815 18:33:43.973" endtime="20220815 18:33:43.976"/>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>myssesion</arg>
+<arg>${URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220815 18:33:43.978" level="INFO">Creating Session using : alias=myssesion, url=http://localhost:9090, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220815 18:33:43.977" endtime="20220815 18:33:43.980"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{body}</var>
+<arg>brand=MASTER</arg>
+<arg>customerId=2</arg>
+<arg>cvc=1000</arg>
+<arg>expirationMoth=2</arg>
+<arg>expirationYear=2023</arg>
+<arg>holderName=${NOME}</arg>
+<arg>number=1001200230034004</arg>
+<arg>status=False</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220815 18:33:43.983" level="INFO">&amp;{body} = { brand=MASTER | customerId=2 | cvc=1000 | expirationMoth=2 | expirationYear=2023 | holderName=Jason Hall | number=1001200230034004 | status=False }</msg>
+<status status="PASS" starttime="20220815 18:33:43.981" endtime="20220815 18:33:43.988"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220815 18:33:43.991" level="INFO">&amp;{headers} = { Content-Type=application/json }</msg>
+<status status="PASS" starttime="20220815 18:33:43.990" endtime="20220815 18:33:43.993"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>myssesion</arg>
+<arg>/card</arg>
+<arg>json=${body}</arg>
+<arg>headers=${headers}</arg>
+<arg>expected_status=400</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20220815 18:33:44.030" level="INFO">POST Request : url=http://localhost:9090/card 
+ path_url=/card 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '179'} 
+ body=b'{"brand": "MASTER", "customerId": "2", "cvc": "1000", "expirationMoth": "2", "expirationYear": "2023", "holderName": "Jason Hall", "number": "1001200230034004", "status": "False"}' 
+ </msg>
+<msg timestamp="20220815 18:33:44.032" level="INFO">POST Response : url=http://localhost:9090/card 
+ status=400, reason= 
+ headers={'Content-Type': 'application/json;charset=UTF-8', 'Transfer-Encoding': 'chunked', 'Date': 'Mon, 15 Aug 2022 21:33:43 GMT', 'Connection': 'close'} 
+ body={"cvc":"cvc must be between 001 to 999"} 
+ </msg>
+<msg timestamp="20220815 18:33:44.035" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20220815 18:33:43.993" endtime="20220815 18:33:44.037"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>&lt;Response [400]&gt;</arg>
+<arg>${resp}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20220815 18:33:44.039" level="INFO">Argument types are:
+&lt;class 'str'&gt;
+&lt;class 'requests.models.Response'&gt;</msg>
+<status status="PASS" starttime="20220815 18:33:44.038" endtime="20220815 18:33:44.043"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${resp.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220815 18:33:44.044" endtime="20220815 18:33:44.046"/>
+</kw>
+<status status="PASS" starttime="20220815 18:33:43.964" endtime="20220815 18:33:44.047"/>
+</test>
+<doc>Teste de API</doc>
+<status status="PASS" starttime="20220815 18:33:43.371" endtime="20220815 18:33:44.050"/>
+</suite>
+<status status="PASS" starttime="20220815 18:33:43.332" endtime="20220815 18:33:44.053"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="QA-Projeto Teste">QA-Projeto Teste</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1" name="API TEST">QA-Projeto Teste.API TEST</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
